@@ -314,7 +314,7 @@ class QuarterShiftTestCase(ZiplineTestCase):
     This tests, in isolation, quarter calculation logic for shifting quarters
     backwards/forwards from a starting point.
     """
-    def test_calc_forward_shift(self):
+    def test_quarter_normalization(self):
         input_yrs = pd.Series([0] * 4)
         input_qtrs = pd.Series(range(1, 5))
         result_years, result_quarters = split_normalized_quarters(
