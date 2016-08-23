@@ -151,7 +151,7 @@ class QuarterEstimatesLoader(PipelineLoader):
         # attribute, given that they're created dynamically?
         groups = groupby(lambda x: x.dataset.num_quarters, columns)
         groups_columns = dict(groups)
-        if (pd.Series(groups_columns) < 0).any():
+        if (pd.Series(groups_columns.keys()) < 0).any():
             raise ValueError("Must pass a number of quarters >= 0")
         out = {}
         self.estimates[NORMALIZED_QUARTERS] = normalize_quarters(
