@@ -104,16 +104,16 @@ class AssetDispatchBarReader(with_metaclass(ABCMeta)):
                                                 start_dt,
                                                 end_dt,
                                                 sid_groups[t])
-            for t in asset_types}
+            for t in asset_types if sid_groups[t]}
 
         results = []
         shape = self._make_raw_array_shape(start_dt, end_dt, len(sids))
 
         for i, field in enumerate(fields):
             out = self._make_raw_array_out(field, shape)
-            for t in asset_types:
-                out[:, out_pos[t]] = batched_arrays[t][i]
-            results += out
+            for t, arrays in iteritems(batched_arrays):
+                out[:, out_pos[t]] = arrays[i]
+            results.append(out)
 
         return results
 

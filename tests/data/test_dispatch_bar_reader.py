@@ -103,5 +103,4 @@ class AssetDispatchMinuteBarTestCase(WithBcolzEquityMinuteBarReader,
 
         results = self.dispatch_reader.load_raw_arrays(
             ['open'], m_open, m_close, [1, 2, 3])
-        import nose; nose.tools.set_trace()
-        pass
+
