@@ -888,6 +888,10 @@ class BcolzMinuteBarReader(MinuteBarReader):
     def _get_metadata(self):
         return BcolzMinuteBarMetadata.read(self._rootdir)
 
+    @property
+    def trading_calendar(self):
+        return self.calendar
+
     @lazyval
     def last_available_dt(self):
         _, close = self.calendar.open_and_close_for_session(self._end_session)
